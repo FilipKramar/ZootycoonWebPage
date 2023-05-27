@@ -29,7 +29,7 @@ public class AnimalService {
 
         AnimalAdditionRequest animalAdditionRequest= new AnimalAdditionRequest();
         animalAdditionRequest.setZooName(request.getZooName());
-        animalAdditionRequest.setZooName(request.getSpecies());
+        animalAdditionRequest.setSpecies(request.getSpecies());
         zooService.bindZooAndAnimal(animalAdditionRequest);
 
 
