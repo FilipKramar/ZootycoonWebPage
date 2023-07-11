@@ -1,0 +1,279 @@
+  
+input.form-control:focus {
+ 
+    border-color: rgb(211, 165, 109); 
+    box-shadow: 0 0 5px rgb(211, 165, 109); 
+  }
+  
+
+
+  .about-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .zoo-tycoon-content {
+    max-width: 600px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+
+  .zoo-tycoon-content h2 {
+    margin-bottom: 20px;
+  }
+
+  .zoo-tycoon-content p {
+    margin-bottom: 15px;
+  }
+
+  .zoo-tycoon-content a {
+    display: inline-block;
+    margin-top: 20px;
+  }
+
+
+
+
+  .carousel-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+
+  .logo-img {
+    width: 10%; 
+    height: auto;
+  }
+
+
+  .ad-img {
+    width: 100%; 
+    height: auto;
+  }
+
+  #modal-container {
+    display: none;
+    position: absolute;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  #modal-content {
+    background: #fff;
+    width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+  }
+
+  #register-modal-content {
+    background: #fff;
+    width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+  }
+
+  
+  .modal-container {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    max-width: 600px;
+  }
+  
+
+
+button.btn.btn-primary {
+  background-color: black; 
+  color: white; 
+}
+#zoo-modal-name {
+  max-width: 100%;
+  max-height: 200px; 
+  object-fit: contain;
+  text-align: center; /* Center the text */
+}
+
+#zoo-modal-biome  {
+  max-width: 100%;
+  max-height: 150px;
+  object-fit: contain;
+  text-align: center; /* Center the text */
+}
+
+#zoo-modal-pictures img {
+  max-width: 100%;
+  max-height: 200px; 
+  object-fit: contain;
+}
+
+#zoo-modal-pictures {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 250px; /* Optional: You can adjust the height to control the container size */
+}
+
+#zoo-modal-animals {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#zoo-modal-animals ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+}
+
+#zoo-modal-animals li {
+  display: flex; /* Add a flex container to center the image inside the list item */
+  align-items: center; /* Align the image vertically */
+  margin-bottom: 10px; /* Optional: Add some spacing between list items */
+}
+
+#zoo-modal-animals img {
+  max-width: 100%;
+  max-height: 150px;
+  object-fit: contain;
+}
+
+#zoo-modal-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+.error-message {
+  background-color: red;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+
+
+
+
+
+
+#animals-jumbotron {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Updated to center the cards */
+}
+.animal-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.animal-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.animal-name {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+
+
+
+.animal-details-menu {
+  background-color: #fefefe;
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 400px;
+}
+
+.animal-details-menu h2 {
+  margin-top: 0;
+}
+
+.animal-details-menu img {
+  width: 100%;
+  height: auto;
+  margin-top: 10px;
+}
+
+#accountcontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+}
+
+
+#updateAccountContainer {
+  text-align: center;
+}
+
+#deleteaccountcontainter {
+  text-align: center;
+}
+
+
+#myzooscontainer ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#myzooscontainer li {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#myzooscontainer li a {
+  display: block;
+  background-color: #f1f1f1;
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+  border-radius: 5px;
+}
+
+#myzooscontainer li a:hover {
+  background-color: #ddd;
+}
