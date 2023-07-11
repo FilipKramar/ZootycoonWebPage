@@ -19,6 +19,9 @@ import lombok.RequiredArgsConstructor;
 
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 
 @Service
@@ -35,28 +38,33 @@ public class ZooService{
             throw new RegistrationException("Zoo name is already in use");
         }
 
-
         Zoo zoo = new Zoo();
         zoo.setName(request.getName());
         zoo.setBiome(request.getBiome());
-        zoo.setPictures(request.getPictures());
-        zoo.setAnimals(request.getAnimals());
 
+        // Fetch animal entities from the database based on the received IDs
+        List<Animal> animals = animalRepository.findByIdIn(request.getAnimals());
+        zoo.setAnimals(animals);
+
+
+        zoo.setPictures(request.getPictures());
         zooRepository.save(zoo);
 
-            ZooAdditionRequest zooAdditionRequest= new ZooAdditionRequest();
-            zooAdditionRequest.setZooName(request.getName());
-            zooAdditionRequest.setUsername(request.getUsername());
-             accountService.bindZooToAccount(zooAdditionRequest);
-
+        // Bind the zoo to the account using the AccountService
+        ZooAdditionRequest zooAdditionRequest = new ZooAdditionRequest();
+        zooAdditionRequest.setZooName(request.getName());
+        zooAdditionRequest.setUsername(request.getUsername());
+        accountService.bindZooToAccount(zooAdditionRequest);
 
         return zoo;
     }
-
     public String delete(ZooDelete request) {
+
         var zoo = zooRepository.findByName(request.getName())
                 .orElseThrow(() -> new RuntimeException("Zoo not found"));
         zoo.getAnimals().clear();
+
+        accountService.removeZooFromAccount(request);
         zooRepository.delete(zoo);
 
         return("Zoo has been deleted.");
@@ -89,5 +97,29 @@ public class ZooService{
         accountRepository.save(account);
 
     }
+
+    private List<Animal> convertToAnimalEntities(List<Object> animalObjects) {
+        List<Animal> animalEntities = new ArrayList<>();
+
+        for (Object animalObject : animalObjects) {
+            if (animalObject instanceof Map) {
+                Map<String, Object> animalMap = (Map<String, Object>) animalObject;
+
+                Animal animal = new Animal();
+                animal.setId((Long) animalMap.get("id"));
+                animal.setSpecies((String) animalMap.get("species"));
+                animal.setBiome((String) animalMap.get("biome"));
+                animal.setDiet((String) animalMap.get("diet"));
+                animal.setPicture((String) animalMap.get("picture"));
+
+                animalEntities.add(animal);
+            }
+        }
+
+        return animalEntities;
+    }
+
+
+
 
 }

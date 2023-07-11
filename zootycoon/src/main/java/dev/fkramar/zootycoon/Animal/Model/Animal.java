@@ -19,4 +19,5 @@ public class Animal {
     private String diet;
     private String picture;
 
+
 }

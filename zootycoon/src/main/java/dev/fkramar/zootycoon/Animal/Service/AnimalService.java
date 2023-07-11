@@ -11,6 +11,9 @@ import dev.fkramar.zootycoon.Zoo.Service.ZooService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class AnimalService {
@@ -19,21 +22,29 @@ public class AnimalService {
     private final ZooService zooService;
 
     public Animal create(AnimalCreateRequest request) {
-        Animal animal=new Animal();
+
+        Animal animal = new Animal();
         animal.setSpecies(request.getSpecies());
         animal.setBiome(request.getBiome());
         animal.setPicture(request.getPicture());
         animal.setDiet(request.getDiet());
 
         animalRepository.save(animal);
-
-        AnimalAdditionRequest animalAdditionRequest= new AnimalAdditionRequest();
-        animalAdditionRequest.setZooName(request.getZooName());
-        animalAdditionRequest.setSpecies(request.getSpecies());
-        zooService.bindZooAndAnimal(animalAdditionRequest);
-
+        
 
         return animal;
     }
 
+
+
+    public List<Animal> getallAnimals() {
+
+
+        return animalRepository.findAll();
+    }
+
+    public Optional<Animal> getAnAnimal(String name) {
+
+        return animalRepository.findBySpecies(name);
+    }
 }

@@ -6,14 +6,12 @@ import dev.fkramar.zootycoon.Zoo.Model.Zoo;
 import dev.fkramar.zootycoon.Zoo.Service.ZooService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/account/zoo")
 @AllArgsConstructor
+@CrossOrigin(origins = "http://127.0.0.1:5500")
 public class ZooController {
 
     private final ZooService zooService;
@@ -23,13 +21,19 @@ public class ZooController {
         return ResponseEntity.ok(zooService.create(request));
 
     }
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public ResponseEntity<String> deleteaZoo (@RequestBody ZooDelete request){
         return ResponseEntity.ok(zooService.delete(request));
 
     }
-    @PostMapping("/delete/animal")
+    @DeleteMapping("/delete/animal")
     public ResponseEntity<String> deleteAnAnimal(@RequestBody AnimalAdditionRequest request) {
+        zooService.deleteAnimalFromZoo(request);
+        return ResponseEntity.ok("Animal deleted from zoo successfully");
+    }
+
+    @PutMapping()
+    public ResponseEntity<String> editZooAnimalList(@RequestBody AnimalAdditionRequest request) {
         zooService.deleteAnimalFromZoo(request);
         return ResponseEntity.ok("Animal deleted from zoo successfully");
     }

@@ -9,8 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AnimalCreateRequest {
-    private String zooName;
+public class  AnimalCreateRequest {
     private String species;
     private String biome;
     private String diet;

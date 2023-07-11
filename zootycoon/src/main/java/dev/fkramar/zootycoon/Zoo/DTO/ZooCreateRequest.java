@@ -17,6 +17,6 @@ public class ZooCreateRequest {
     private String name;
     private String biome;
     private List<String> pictures;
-    private List<Animal> animals;
+    private List<Long> animals;
 
 }
